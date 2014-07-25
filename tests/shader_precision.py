@@ -9,3 +9,5 @@ __all__ = ['profile']
 
 profile = TestProfile()
 profile.tests['spec/arb_shader_precision-divide-by-zero'] = PiglitTest('arb_shader_precision-divide-by-zero')
+profile.tests['spec/arb_shader_precision-denormalized-input'] = PiglitTest('arb_shader_precision-denormalized-input')
+profile.tests['spec/arb_shader_precision-denormalized-output'] = PiglitTest('arb_shader_precision-denormalized-output')

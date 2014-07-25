@@ -1,0 +1,8 @@
+1.17549435e-38 //a) least positive normalized float (FLT_MIN)
+1.40129846e-45 //b) least positive denormal float (subtracting this from FLT_MIN produces a denormal)
+1.17549435e-38 //a) least positive normalized float (FLT_MIN)
+1.17549421e-38 //b) most positive denormal float (subtracting this from FLT_MIN produces a denormal)
+-0e0 //a) negative zero
+1.40129846e-45 //b) least negative denormal float (subtracting this from negative zero produces a denormal) 
+-0e0 //a) negative zero
+1.17549421e-38 //b) most negative denormal float (subtracting this from negative zero produces a denormal) 

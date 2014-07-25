@@ -1,0 +1,4 @@
+1.40129846e-45 //least positive denormal float (should be flushed to zero)
+-1.40129846e-45 //least negative denormal float (should be flushed to zero)
+1.17549421e-38 //most positive denormal float (should be flushed to zero)
+-1.17549421e-38 //most negative denormal float (should be flushed to zero)
