@@ -13,3 +13,4 @@ profile.tests['spec/arb_shader_precision-denormalized-input'] = PiglitTest('arb_
 profile.tests['spec/arb_shader_precision-denormalized-output'] = PiglitTest('arb_shader_precision-denormalized-output')
 profile.tests['spec/arb_shader_precision-add'] = PiglitTest('arb_shader_precision-add')
 profile.tests['spec/arb_shader_precision-sub'] = PiglitTest('arb_shader_precision-sub')
+profile.tests['spec/arb_shader_precision-mult'] = PiglitTest('arb_shader_precision-mult')
