@@ -14,5 +14,6 @@ piglit_add_executable (arb_shader_precision-divide-by-zero $<TARGET_OBJECTS:comm
 piglit_add_executable (arb_shader_precision-denormalized-input $<TARGET_OBJECTS:common> denormalized-input.c)
 piglit_add_executable (arb_shader_precision-denormalized-output $<TARGET_OBJECTS:common> denormalized-output.c)
 piglit_add_executable (arb_shader_precision-add $<TARGET_OBJECTS:common> add.c)
+piglit_add_executable (arb_shader_precision-sub $<TARGET_OBJECTS:common> sub.c)
 
 # vim: ft=cmake:

@@ -1,0 +1,16 @@
+1e0            //a)
+2.98023259e-08 //b) this is the largest value that can be subtracted from 1e0 and still trigger rounding down (result: 9.99999940e-01)
+1e0            //a)
+2.98023224e-08 //b) this is the smallest value that can be subtracted from 1e0 and still trigger rounding up (result: 1e0)
+1e0            //a)
+1.00000001e-07 //b) easily rounds down
+1e0            //a)
+1.00000008e-08 //b) easily rounds up
+1.97215250e-31 //a) largest value from which FLT_MIN can be subtracted and still trigger a round down
+1.17549435e-38 //b) least positive normalized float (FLT_MIN)
+1.97215273e-31 //a) smallest value to which FLT_MIN can be subtracted without triggering a round down
+1.17549435e-38 //b) least positive normalized float (FLT_MIN)
+3.40282347e+38 //a) most positive float (FLT_MAX)
+1.01412048e+31 //b) this is the largest value that can be subtracted from FLT_MAX and still trigger rounding down (result: 3.40282326e+38)
+3.40282347e+38 //a) most positive float (FLT_MAX)
+1.01412042e+31 //b) this is the smallest value that can be subtracted from FLT_MAX and still trigger rounding up (result: FLT_MAX)
