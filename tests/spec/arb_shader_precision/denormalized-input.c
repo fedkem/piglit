@@ -23,8 +23,9 @@
  */
 
 /**
- * Test: log
- * Tests "log <= 3 ULP" from ARB_shader_precision.
+ * Test: denormalized-input
+ * Tests "a denormalized value input into a shader can be flushed to zero"
+ * from ARB_shader_precision.
  */
 
 #include "piglit-util-gl-common.h"

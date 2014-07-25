@@ -23,9 +23,10 @@
  */
 
 /**
- * Test: divide-by-zero
- * Tests "Dividing by 0 results in the appropriately signed IEEE Inf." from
- * ARB_shader_precision.
+ * Test: fma-manual
+ * Tests "manual fma operations of the form a*b+c result in a 
+ * correctly rounded single operation or sequence of two correctly 
+ * rounded operations" from ARB_shader_precision.
  */
 
 #include <string.h>

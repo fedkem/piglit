@@ -23,8 +23,8 @@
  */
 
 /**
- * Test: divide-by-zero
- * Tests "Dividing by 0 results in the appropriately signed IEEE Inf." from
+ * Test: sub
+ * Tests "the arithmetic operation a-b is correctly rounded" from
  * ARB_shader_precision.
  */
 
