@@ -10,5 +10,6 @@ link_libraries (
 )
 
 add_library(common OBJECT common.c)
+piglit_add_executable (arb_shader_precision-divide-by-zero $<TARGET_OBJECTS:common> divide-by-zero.c)
 
 # vim: ft=cmake:

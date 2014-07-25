@@ -1,0 +1,4 @@
+3.40282347e+38 //most positive float (FLT_MAX)
+-3.40282347e+38 //most negative float (-FLT_MAX)
+1.17549435e-38 //least positive normalized float (FLT_MIN)
+-1.17549435e-38 //least negative normalized float (-FLT_MIN)

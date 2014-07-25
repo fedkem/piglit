@@ -8,3 +8,4 @@ from framework.exectest import PiglitTest
 __all__ = ['profile']
 
 profile = TestProfile()
+profile.tests['spec/arb_shader_precision-divide-by-zero'] = PiglitTest('arb_shader_precision-divide-by-zero')
