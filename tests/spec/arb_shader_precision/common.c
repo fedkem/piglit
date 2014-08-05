@@ -78,6 +78,7 @@ load_and_alloc_params(const char *name, unsigned int *num_params)
    float *retarray = NULL;
    FILE *fp;
    char *filename;
+   unsigned int filename_sz;
    char prefix[] = "tests/spec/arb_shader_precision/";
    char suffix[] = ".params";
    int scanfret = 0;
@@ -85,9 +86,9 @@ load_and_alloc_params(const char *name, unsigned int *num_params)
    float val;
    bool done = false;
 
-   filename =
-      (char *) malloc(strlen(prefix) + strlen(name) + strlen(suffix) + 1);
-   memset(filename, 0, strlen(filename));
+   filename_sz = strlen(prefix) + strlen(name) + strlen(suffix) + 1;
+   filename = (char *) malloc(filename_sz);
+   memset(filename, 0, filename_sz);
    sprintf(filename, "%s%s%s", prefix, name, suffix);
 
    fp = fopen(filename, "r");
