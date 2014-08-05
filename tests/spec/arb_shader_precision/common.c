@@ -122,7 +122,7 @@ load_and_alloc_params(const char *name, unsigned int *num_params)
 bool
 precision_test_fv(const unsigned int prog, const char *uniformname,
                   const float_u * params, const unsigned int nmemb,
-                  precision_func_t * pf)
+                  const precision_func_t * pf)
 {
    float_u expected;
    float_u probed[4];
