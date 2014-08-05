@@ -32,40 +32,53 @@ setup_unclamped_output(void)
 {
    int ret = 0;
    GLuint fb;
-   GLuint tex;
 
-   piglit_require_extension("GL_ARB_texture_float");
+   GLuint rb;
 
-   glGenFramebuffersEXT(1, &fb);
-   glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fb);
+
+   //clear glGetError()
+   glGetError();
+
+   glGenFramebuffers(1, &fb);
    ret = glGetError();
    if (ret) {
-      printf("glBindFramebufferEXT error: %x\n", ret);
+      printf("glGenFramebuffer error: %x\n", ret);
       return ret;
    }
-   glGenTextures(1, &tex);
-   glBindTexture(GL_TEXTURE_2D, tex);
+
+   glBindFramebuffer(GL_FRAMEBUFFER, fb);
    ret = glGetError();
    if (ret) {
-      printf("glBindTexture error: %x\n", ret);
+      printf("glBindFramebuffer error: %x\n", ret);
       return ret;
    }
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-   glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F_ARB, 2, 2, 0, 
-                GL_RGBA, GL_FLOAT, 0);
+
+   glGenRenderbuffers( 1, &rb );
    ret = glGetError();
    if (ret) {
-      printf("glTexImage2D error: %x\n", ret);
+      printf("glGenRenderbuffers error: %x\n", ret);
       return ret;
    }
-   glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT,
-                             GL_TEXTURE_2D, tex, 0);
+
+   glBindRenderbuffer( GL_RENDERBUFFER, rb );
    ret = glGetError();
    if (ret) {
-      printf("glFramebufferTexture2DEXT error: %x\n", ret);
+      printf("glBindRenderbuffer error: %x\n", ret);
+      return ret;
+   }
+
+   glRenderbufferStorage( GL_RENDERBUFFER, GL_RGBA32F, 2, 2 );
+   ret = glGetError();
+   if (ret) {
+      printf("glRenderbufferStorage error: %x\n", ret);
+      return ret;
+   }
+
+   glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                             GL_RENDERBUFFER, rb);
+   ret = glGetError();
+   if (ret) {
+      printf("glFramebufferRenderbuffer error: %x\n", ret);
       return ret;
    }
 
@@ -142,10 +155,11 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
    glerr = glGetError();
    if (glerr) {
       printf
-         ("failed to get uniform location for uniform: \"%s\", test failed! ",
+         ("failed to get uniform location for uniform: \"%s\", test failed! \n",
           uniformname);
       return false;
    }
+
    //TODO set fenv defaults?
 
    for (i = 0; i < nmemb; i += pf->func_type) {
@@ -154,6 +168,13 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
       case ONE_PARAM:
          expected = (float_u) pf->func_one_param(params[i].f);
          glUniform1f(param_location, params[i].f);
+         glerr = glGetError();
+         if (glerr) {
+            printf
+               ("failed to set uniform value: %1.8e, location: %d %x \n",
+                params[i].f, param_location, glerr);
+            return false;
+         }
          printf("%s(%1.8e)(%x): ", pf->name, 
                 params[i].f, params[i].u);
          break;
@@ -161,6 +182,13 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
          expected =
             (float_u) pf->func_two_param(params[i].f, params[i + 1].f);
          glUniform2fv(param_location, 1, (GLfloat *) & params[i].f);
+         glerr = glGetError();
+         if (glerr) {
+            printf
+               ("failed to set uniform values: %1.8e %1.8e, %x \n",
+                params[i].f, params[i + 1].f, glerr);
+            return false;
+         }
          printf("%s(%1.8e, %1.8e)(%x, %x): ", pf->name,
                 params[i].f, params[i + 1].f, 
                 params[i].u, params[i + 1].u);
@@ -170,6 +198,13 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
             (float_u) pf->func_three_param(params[i].f, params[i + 1].f,
                                            params[i + 2].f);
          glUniform3fv(param_location, 1, (GLfloat *) & params[i].f);
+         glerr = glGetError();
+         if (glerr) {
+            printf
+               ("failed to set uniform values: %1.8e %1.8e %1.8e, %x \n",
+                params[i].f, params[i + 1].f, params[i + 2].f, glerr);
+            return false;
+         }
          printf("%s(%1.8e, %1.8e, %1.8e)(%x, %x, %x): ", pf->name,
                 params[i].f, params[i + 1].f, params[i + 2].f, 
                 params[i].u, params[i + 1].u, params[i + 2].u);
@@ -181,6 +216,7 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
 
       glClear(GL_COLOR_BUFFER_BIT);
       piglit_draw_rect(0, 0, WIDTH, HEIGHT);
+
       glReadPixels(0, 0, 1, 1, GL_RGBA, GL_FLOAT, (float *) probed);
 
       if (probed[0].fields.sign != expected.fields.sign) {

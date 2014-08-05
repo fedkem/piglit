@@ -32,7 +32,7 @@
 
 PIGLIT_GL_TEST_CONFIG_BEGIN
 
-   config.supports_gl_compat_version = 10;
+   config.supports_gl_core_version = 33;
 
    config.window_visual = PIGLIT_GL_VISUAL_RGBA | PIGLIT_GL_VISUAL_DOUBLE;
 
@@ -71,20 +71,24 @@ piglit_init(int argc, char **argv)
 {
    GLuint vs, fs;
    const char *verttext =
+      "#version 330\n"
       "uniform float param;\n"
-      "varying float vertresult;\n"
+      "in vec4 piglit_vertex;\n"
+      "out float vertresult;\n"
       "void main(void) \n"
       "{ \n"
       "   vertresult = log(param);\n"
-      "   gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
+      "   gl_Position = piglit_vertex;\n"
       "} \n";
    const char *fragtext =
+      "#version 330\n"
       "uniform float param;\n"
-      "varying float vertresult;\n"
+      "in float vertresult;\n"
+      "out vec4 outputColor;\n"
       "void main(void) \n"
       "{ \n"
       "   float fragresult = log(param);\n"
-      "   gl_FragColor = vec4(vertresult, fragresult, param, 1.0);\n"
+      "   outputColor = vec4(vertresult, fragresult, param, 1.0);\n"
       "} \n";
 
    //piglit_require_extension("GL_ARB_fragment_shader");
@@ -93,8 +97,6 @@ piglit_init(int argc, char **argv)
       printf("%s: window is too small.\n", TestName);
       exit(1);
    }
-
-   piglit_ortho_projection(WIDTH, HEIGHT, GL_FALSE);
 
    if (setup_unclamped_output()) {
       printf("%s: failed to setup unclamped output, exiting\n", TestName);
