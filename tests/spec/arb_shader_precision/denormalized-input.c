@@ -77,7 +77,6 @@ piglit_display(void)
 void
 piglit_init(int argc, char **argv)
 {
-   GLuint vs, fs;
    const char *verttext =
       "#version 330\n"
       "uniform float param;\n"
@@ -111,9 +110,7 @@ piglit_init(int argc, char **argv)
       exit(1);
    }
 
-   vs = piglit_compile_shader_text(GL_VERTEX_SHADER, verttext);
-   fs = piglit_compile_shader_text(GL_FRAGMENT_SHADER, fragtext);
-   Prog = piglit_link_simple_program(vs, fs);
+   Prog = piglit_build_simple_program(verttext, fragtext);
    glUseProgram(Prog);
 
    glViewport(0, 0, WIDTH, HEIGHT);
