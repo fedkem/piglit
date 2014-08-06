@@ -53,21 +53,21 @@ setup_unclamped_output(void)
       return ret;
    }
 
-   glGenRenderbuffers( 1, &rb );
+   glGenRenderbuffers(1, &rb);
    ret = glGetError();
    if (ret) {
       printf("glGenRenderbuffers error: %x\n", ret);
       return ret;
    }
 
-   glBindRenderbuffer( GL_RENDERBUFFER, rb );
+   glBindRenderbuffer(GL_RENDERBUFFER, rb);
    ret = glGetError();
    if (ret) {
       printf("glBindRenderbuffer error: %x\n", ret);
       return ret;
    }
 
-   glRenderbufferStorage( GL_RENDERBUFFER, GL_RGBA32F, 2, 2 );
+   glRenderbufferStorage(GL_RENDERBUFFER, GL_RGBA32F, 2, 2);
    ret = glGetError();
    if (ret) {
       printf("glRenderbufferStorage error: %x\n", ret);
@@ -159,7 +159,6 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
           uniformname);
       return false;
    }
-
    //TODO set fenv defaults?
 
    for (i = 0; i < nmemb; i += pf->func_type) {
@@ -206,7 +205,7 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
             return false;
          }
          printf("%s(%1.8e, %1.8e, %1.8e)(%x, %x, %x): ", pf->name,
-                params[i].f, params[i + 1].f, params[i + 2].f, 
+                params[i].f, params[i + 1].f, params[i + 2].f,
                 params[i].u, params[i + 1].u, params[i + 2].u);
          break;
       default:
@@ -241,8 +240,8 @@ precision_test_fv(const unsigned int prog, const char *uniformname,
              "vert: %1.8e (%x) sign match: %u ulp diff: %u(%u) passed: %d "
              "frag: %1.8e (%x) sign match: %u ulp diff: %u(%u) passed: %d \n",
              expected.f, expected.u,
-             probed[0].f, probed[0].u, vert_sign_match, 
-             vert_ulps_diff, pf->ulps, vert_result, 
+             probed[0].f, probed[0].u, vert_sign_match,
+             vert_ulps_diff, pf->ulps, vert_result,
              probed[1].f, probed[1].u, frag_sign_match,
              frag_ulps_diff, pf->ulps, frag_result);
 

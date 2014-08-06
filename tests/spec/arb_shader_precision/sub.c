@@ -61,7 +61,7 @@ piglit_display(void)
    pf.name = TestName;
    pf.func_type = TWO_PARAM;
    pf.func_two_param = minus;
-   pf.ulps = 0; //matching results indicate correct rounding
+   pf.ulps = 0;                 //matching results indicate correct rounding
 
    params = load_and_alloc_params(TestName, &num_params);
 
