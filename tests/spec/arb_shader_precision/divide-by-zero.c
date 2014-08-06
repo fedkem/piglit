@@ -81,6 +81,7 @@ piglit_init(int argc, char **argv)
 {
    const char *verttext =
       "#version 330\n"
+      "#extension GL_ARB_SHADER_PRECISION : enable\n"
       "uniform float param;\n"
       "in vec4 piglit_vertex;\n"
       "out float vertresult;\n"
@@ -91,6 +92,7 @@ piglit_init(int argc, char **argv)
       "} \n";
    const char *fragtext =
       "#version 330\n"
+      "#extension GL_ARB_SHADER_PRECISION : enable\n"
       "uniform float param;\n"
       "in float vertresult;\n"
       "out vec4 outputColor;\n"
