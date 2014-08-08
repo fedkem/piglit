@@ -1,0 +1,22 @@
+1.17549435e-38 //a least positive normalized float (FLT_MIN)
+1.17549435e-38 //b least positive normalized float (FLT_MIN) (success case)
+1.17549435e-38 //a least positive normalized float (FLT_MIN)
+1.17549449e-38 //b next representable float after FLT_MIN (success case)
+-1.17549449e-38 //a next representable float less than -FLT_MIN
+-1.17549435e-38 //b least negative normalized float (-FLT_MIN) (success case)
+3.40282306e+38 //a representable float previous to FLT_MAX
+3.40282347e+38 //b most positive float (FLT_MAX) (success case)
+-3.40282347e+38 //a most negative float (-FLT_MAX)
+-3.40282347e+38 //b most negative float (-FLT_MAX) (success case)
+-3.40282347e+38 //a most negative float (-FLT_MAX)
+-3.40282306e+38 //b representable float greater than the -FLT_MAX (success case)
+-0e0 //a negative zero
+0e0 //b positive zero (failure case)
+1.17549449e-38 //b next representable float after FLT_MIN
+1.17549435e-38 //a least positive normalized float (FLT_MIN) (failure case)
+-1.17549435e-38 //b least negative normalized float (-FLT_MIN)
+-1.17549449e-38 //a next representable float less than -FLT_MIN (failure case)
+3.40282347e+38 //b most positive float (FLT_MAX)
+3.40282306e+38 //a representable float previous to FLT_MAX (failure case)
+-3.40282306e+38 //b representable float greater than the -FLT_MAX
+-3.40282347e+38 //a most negative float (-FLT_MAX) (failure case)
