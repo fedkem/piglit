@@ -19,3 +19,4 @@ profile.tests['spec/arb_shader_precision-log'] = PiglitTest('arb_shader_precisio
 profile.tests['spec/arb_shader_precision-lt'] = PiglitTest('arb_shader_precision-lt')
 profile.tests['spec/arb_shader_precision-lte'] = PiglitTest('arb_shader_precision-lte')
 profile.tests['spec/arb_shader_precision-equal'] = PiglitTest('arb_shader_precision-equal')
+profile.tests['spec/arb_shader_precision-gt'] = PiglitTest('arb_shader_precision-gt')
