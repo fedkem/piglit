@@ -1,0 +1,18 @@
+1.17549435e-38 //a least positive normalized float (FLT_MIN)
+1.17549435e-38 //b (success case)
+3.40282347e+38 //a most positive float (FLT_MAX)
+3.40282347e+38 //b (success case)
+-1.17549435e-38 //a least negative normalized float (-FLT_MIN)
+-1.17549435e-38 //b (success case)
+-3.40282347e+38 //a most negative float (-FLT_MAX)
+-3.40282347e+38 //b (success case)
+0e0 //a positive zero
+0e0 //b (success case)
+-0e0 //a negative zero
+-0e0 //b (success case)
+0e0 //a positive zero
+-0e0 //b (success case, since sign of zero is ignored according IEEE754)
+1.17549435e-38 //a least positive normalized float (FLT_MIN)
+1.17549449e-38 //b next representable float after FLT_MIN (failure case)
+-3.40282347e+38 //a most negative float (-FLT_MAX)
+-3.40282306e+38 //b representable float greater than -FLT_MAX (failure case)
