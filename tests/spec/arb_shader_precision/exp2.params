@@ -1,0 +1,2 @@
+1.27999992e+02 //exp2(1.27999992e+02) = 3.40280562e+38; this is the closest we can get to FLT_MAX
+-1.26000000e+02 //exp2(-1.26000000e+02) = 1.17549435e-38; this is exactly FLT_MIN
