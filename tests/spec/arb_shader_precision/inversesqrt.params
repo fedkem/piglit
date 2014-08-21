@@ -1,0 +1,2 @@
+3.40282347e+38 //FLT_MAX - produces the smallest value inversesqrt can return
+1.17549435e-38 //FLT_MIN - produces the largest value inversesqrt can return (without resorting to subnormals)
