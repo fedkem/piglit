@@ -1,0 +1,2 @@
+3.40282347e+38 //FLT_MAX - produces the largest value sqrt can return
+1.17549435e-38 //FLT_MIN - produces the smallest value sqrt can return

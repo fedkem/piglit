@@ -25,3 +25,4 @@ profile.tests['spec/arb_shader_precision-pow'] = PiglitTest('arb_shader_precisio
 profile.tests['spec/arb_shader_precision-exp'] = PiglitTest('arb_shader_precision-exp')
 profile.tests['spec/arb_shader_precision-exp2'] = PiglitTest('arb_shader_precision-exp2')
 profile.tests['spec/arb_shader_precision-log2'] = PiglitTest('arb_shader_precision-log2')
+profile.tests['spec/arb_shader_precision-sqrt'] = PiglitTest('arb_shader_precision-sqrt')

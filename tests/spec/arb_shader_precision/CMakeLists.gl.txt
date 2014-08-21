@@ -27,5 +27,6 @@ piglit_add_executable (arb_shader_precision-pow $<TARGET_OBJECTS:common> pow.c)
 piglit_add_executable (arb_shader_precision-exp $<TARGET_OBJECTS:common> exp.c)
 piglit_add_executable (arb_shader_precision-exp2 $<TARGET_OBJECTS:common> exp2.c)
 piglit_add_executable (arb_shader_precision-log2 $<TARGET_OBJECTS:common> log2.c)
+piglit_add_executable (arb_shader_precision-sqrt $<TARGET_OBJECTS:common> sqrt.c)
 
 # vim: ft=cmake:
